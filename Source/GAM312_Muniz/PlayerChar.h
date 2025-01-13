@@ -27,22 +27,44 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+	//Functions for implementing movement
 	UFUNCTION()
-	void MoveForward(float axisValue);
+		void MoveForward(float axisValue);
 
 	UFUNCTION()
-	void MoveRight(float axisValue);
+		void MoveRight(float axisValue);
 
 	UFUNCTION()
-	void StartJump();
+		void StartJump();
 
 	UFUNCTION()
-	void StopJump();
+		void StopJump();
 
+	//Not implemented
 	UFUNCTION()
-	void FindObject();
+		void FindObject();
 
 	UPROPERTY(VisibleAnywhere)
 	UCameraComponent* PlayerCanComp;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Player Stats")
+	float Health = 100.0f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Player Stats")
+	float Hunger = 100.0f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Player Stats")
+	float Stamina = 100.0f;
+
+	UFUNCTION(BlueprintCallable)
+		void SetHealth(float newHealth);
+
+	UFUNCTION(BlueprintCallable)
+		void SetHunger(float newHunger);
+
+	UFUNCTION(BlueprintCallable)
+		void SetStamina(float newStamina);
+
+	UFUNCTION(BlueprintCallable)
+		void DecreaseStats();
 };
