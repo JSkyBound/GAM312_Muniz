@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "Camera/CameraComponent.h"
+#include "Resource_M.h"
 #include "PlayerChar.generated.h"
 
 UCLASS()
@@ -45,7 +46,7 @@ public:
 		void FindObject();
 
 	UPROPERTY(VisibleAnywhere)
-	UCameraComponent* PlayerCanComp;
+	UCameraComponent* PlayerCamComp;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Player Stats")
 	float Health = 100.0f;
@@ -55,6 +56,24 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Player Stats")
 	float Stamina = 100.0f;
+
+	UPROPERTY(EditAnywhere, Category = "Resources")
+		int Wood;
+	
+	UPROPERTY(EditAnywhere, Category = "Resources")
+		int Stone;
+	
+	UPROPERTY(EditAnywhere, Category = "Resources")
+		int Berry;
+
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Resources")
+		TArray<int> ResourcesArray;
+	
+	UPROPERTY(EditAnywhere, Category = "Resources")
+		TArray<FString> ResourcesNameArray;
+
+	
 
 	UFUNCTION(BlueprintCallable)
 		void SetHealth(float newHealth);
@@ -67,4 +86,7 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 		void DecreaseStats();
+
+	UFUNCTION()
+	void GiveResource(float amount, FString resourceType);	
 };
