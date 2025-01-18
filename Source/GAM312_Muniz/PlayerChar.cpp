@@ -23,6 +23,9 @@ APlayerChar::APlayerChar()
 	ResourcesNameArray.Add(TEXT("Wood"));
 	ResourcesNameArray.Add(TEXT("Stone"));
 	ResourcesNameArray.Add(TEXT("Berry"));
+	ResourcesNameArray.Add(TEXT("Tree"));
+	ResourcesNameArray.Add(TEXT("Rock"));
+	ResourcesNameArray.Add(TEXT("Bush"));
 
 	
 }
@@ -86,6 +89,7 @@ void APlayerChar::StopJump()
 	bPressedJump = false;
 }
 
+//Defining what happens when you interact with a resource object
 void APlayerChar::FindObject()
 {
 	FHitResult HitResult;
@@ -98,12 +102,15 @@ void APlayerChar::FindObject()
 	QueryParams.bTraceComplex = true;
 	QueryParams.bReturnFaceIndex = true;
 
+	//This if-else checks if there is an object in the player's line of sight by using line tracing
 	if (GetWorld()->LineTraceSingleByChannel(HitResult, StartLocation, EndLocation, ECC_Visibility, QueryParams))
 	{
 		AResource_M* HitResource = Cast<AResource_M>(HitResult.GetActor());
 
+		//Checks if player has sufficient stamina to get resource
 		if (Stamina > 5.0f)
 		{
+			//Checks the type of resource and destroys it once it is exhausted
 			if (HitResource)
 			{
 				FString HitName = HitResource->resourceName;
@@ -174,6 +181,10 @@ void APlayerChar::DecreaseStats()
 	}
 }
 
+//Allocates amount of each resource to a specific index in an array.
+//Needs a better implementation where we can pull what item type it is alongside the amount!
+//Idea: Dictionary? Two-dimensional array?
+//Or just an array of objects? We did create the BPs in Unreal.
 void APlayerChar::GiveResource(float amount, FString resourceType)
 {
 	if (resourceType == "Wood")
@@ -187,6 +198,21 @@ void APlayerChar::GiveResource(float amount, FString resourceType)
 	}
 
 	if (resourceType == "Berry")
+	{
+		ResourcesArray[0] = ResourcesArray[2] + amount;
+	}
+
+	if (resourceType == "Tree")
+	{
+		ResourcesArray[0] = ResourcesArray[0] + amount;
+	}
+
+	if (resourceType == "Rock")
+	{
+		ResourcesArray[0] = ResourcesArray[1] + amount;
+	}
+
+	if (resourceType == "Bush")
 	{
 		ResourcesArray[0] = ResourcesArray[2] + amount;
 	}

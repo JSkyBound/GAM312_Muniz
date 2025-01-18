@@ -67,6 +67,15 @@ public:
 	UPROPERTY(EditAnywhere, Category = "Resources")
 		int Berry;
 
+	UPROPERTY(EditAnywhere, Category = "Resources")
+		int Tree;
+
+	UPROPERTY(EditAnywhere, Category = "Resources")
+		int Rock;
+
+	UPROPERTY(EditAnywhere, Category = "Resources")
+		int Bush;
+
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Resources")
 		TArray<int> ResourcesArray;
