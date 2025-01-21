@@ -194,12 +194,12 @@ void APlayerChar::GiveResource(float amount, FString resourceType)
 
 	if (resourceType == "Stone")
 	{
-		ResourcesArray[0] = ResourcesArray[1] + amount;
+		ResourcesArray[1] = ResourcesArray[1] + amount;
 	}
 
 	if (resourceType == "Berry")
 	{
-		ResourcesArray[0] = ResourcesArray[2] + amount;
+		ResourcesArray[2] = ResourcesArray[2] + amount;
 	}
 
 	if (resourceType == "Tree")
@@ -209,12 +209,12 @@ void APlayerChar::GiveResource(float amount, FString resourceType)
 
 	if (resourceType == "Rock")
 	{
-		ResourcesArray[0] = ResourcesArray[1] + amount;
+		ResourcesArray[1] = ResourcesArray[1] + amount;
 	}
 
 	if (resourceType == "Bush")
 	{
-		ResourcesArray[0] = ResourcesArray[2] + amount;
+		ResourcesArray[2] = ResourcesArray[2] + amount;
 	}
 }
 
