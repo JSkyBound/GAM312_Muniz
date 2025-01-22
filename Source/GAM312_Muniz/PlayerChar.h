@@ -7,6 +7,7 @@
 #include "Camera/CameraComponent.h"
 #include "Resource_M.h"
 #include "Kismet/GameplayStatics.h"
+#include "BuildingPart.h"
 #include "PlayerChar.generated.h"
 
 UCLASS()
@@ -49,6 +50,7 @@ public:
 	UPROPERTY(VisibleAnywhere)
 	UCameraComponent* PlayerCamComp;
 
+	//Player Variables
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Player Stats")
 	float Health = 100.0f;
 
@@ -58,6 +60,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Player Stats")
 	float Stamina = 100.0f;
 
+	//Player Resources
 	UPROPERTY(EditAnywhere, Category = "Resources")
 		int Wood;
 	
@@ -76,15 +79,31 @@ public:
 	UPROPERTY(EditAnywhere, Category = "Resources")
 		int Bush;
 
-	
+
+	//Arrays
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Resources")
 		TArray<int> ResourcesArray;
 	
 	UPROPERTY(EditAnywhere, Category = "Resources")
 		TArray<FString> ResourcesNameArray;
 
+	//HitMarker
+
 	UPROPERTY(EditAnywhere, Category = "HitMarker")
 		UMaterialInterface* hitDecal;
+
+	UPROPERTY(EditAnywhere, Category = "Resources")
+		TArray<int> BuildingArray;
+
+	UPROPERTY()
+		bool isBuilding;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+		TSubclassOf<ABuildingPart> BuildPartClass;
+
+	 UPROPERTY()
+		ABuildingPart* spawnedPart;
+	//Setters
 
 	UFUNCTION(BlueprintCallable)
 		void SetHealth(float newHealth);
@@ -99,5 +118,14 @@ public:
 		void DecreaseStats();
 
 	UFUNCTION()
-	void GiveResource(float amount, FString resourceType);	
+	void GiveResource(float amount, FString resourceType);
+
+	UFUNCTION()
+	void UpdateResource(float woodAmount, float stoneAmount, FString buildingObject);
+
+	UFUNCTION(BlueprintCallable)
+	void SpawnBuilding(int buildingID, bool& isSuccess);
+
+	UFUNCTION()
+	void RotateBuilding();
 };
