@@ -92,7 +92,7 @@ public:
 	UPROPERTY(EditAnywhere, Category = "HitMarker")
 		UMaterialInterface* hitDecal;
 
-	UPROPERTY(EditAnywhere, Category = "Resources")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Resources")
 		TArray<int> BuildingArray;
 
 	UPROPERTY()
@@ -120,7 +120,7 @@ public:
 	UFUNCTION()
 	void GiveResource(float amount, FString resourceType);
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	void UpdateResource(float woodAmount, float stoneAmount, FString buildingObject);
 
 	UFUNCTION(BlueprintCallable)
