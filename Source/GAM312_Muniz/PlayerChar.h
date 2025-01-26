@@ -92,6 +92,8 @@ public:
 	UPROPERTY(EditAnywhere, Category = "HitMarker")
 		UMaterialInterface* hitDecal;
 
+	
+	//Array of crafted buildings/parts
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Resources")
 		TArray<int> BuildingArray;
 

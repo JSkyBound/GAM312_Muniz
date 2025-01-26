@@ -9,9 +9,11 @@ ABuildingPart::ABuildingPart()
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
+	
 	Mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh"));
 	PivotArrow = CreateDefaultSubobject<UArrowComponent>(TEXT("Pivot Arrow"));
 
+	//Makes the pivot arrow the root component and attaches the mesh
 	RootComponent = PivotArrow;
 	Mesh->SetupAttachment(PivotArrow);
 

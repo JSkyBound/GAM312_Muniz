@@ -19,7 +19,7 @@ APlayerChar::APlayerChar()
 
 	PlayerCamComp->bUsePawnControlRotation = true;
 
-	BuildingArray.SetNum(3);
+	BuildingArray.SetNum(4);
 	ResourcesArray.SetNum(3);
 	ResourcesNameArray.Add(TEXT("Wood"));
 	ResourcesNameArray.Add(TEXT("Stone"));
@@ -261,6 +261,11 @@ void APlayerChar::UpdateResource(float woodAmount, float stoneAmount, FString bu
 		if (buildingObject == "Ceiling")
 		{
 			BuildingArray[2] = BuildingArray[2] + 1;
+		}
+
+		if (buildingObject == "Shelter")
+		{
+			BuildingArray[3] = BuildingArray[3] + 1;
 		}
 	}
 	
