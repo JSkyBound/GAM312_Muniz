@@ -241,6 +241,7 @@ void APlayerChar::GiveResource(float amount, FString resourceType)
 	}
 }
 
+//Uses up the corresponding resources being used and allocates the building object to its corresponding array index
 void APlayerChar::UpdateResource(float woodAmount, float stoneAmount, FString buildingObject)
 {
 	if (woodAmount <= ResourcesArray[0])
@@ -271,6 +272,7 @@ void APlayerChar::UpdateResource(float woodAmount, float stoneAmount, FString bu
 	
 }
 
+//Spawns the corresponding BuildPartClass object if it is a building
 void APlayerChar::SpawnBuilding(int buildingID, bool& isSuccess)
 {
 	if (!isBuilding)
@@ -295,6 +297,7 @@ void APlayerChar::SpawnBuilding(int buildingID, bool& isSuccess)
 	}
 }
 
+//Allows player to rotate the building in 90 degree increments.
 void APlayerChar::RotateBuilding()
 {
 	if (isBuilding)
