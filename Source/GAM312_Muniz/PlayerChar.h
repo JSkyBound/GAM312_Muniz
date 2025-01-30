@@ -7,6 +7,7 @@
 #include "Camera/CameraComponent.h"
 #include "Resource_M.h"
 #include "Kismet/GameplayStatics.h"
+#include "PlayerWidget.h"
 #include "BuildingPart.h"
 #include "PlayerChar.generated.h"
 
@@ -105,6 +106,9 @@ public:
 
 	 UPROPERTY()
 		ABuildingPart* spawnedPart;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		UPlayerWidget* playerWidget;;
 	//Setters
 
 	UFUNCTION(BlueprintCallable)
