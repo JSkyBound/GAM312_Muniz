@@ -319,3 +319,19 @@ void APlayerChar::RotateBuilding()
 	}
 }
 
+int APlayerChar::GetWood()
+{
+	return this->Wood;
+}
+
+int APlayerChar::GetStone()
+{
+	return this->Stone;
+}
+
+void APlayerChar::AddResource_Debug(float woodAmount, float stoneAmount)
+{
+	ResourcesArray[0] = ResourcesArray[0] + woodAmount;
+	ResourcesArray[1] = ResourcesArray[1] + stoneAmount;
+}
+

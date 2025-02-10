@@ -139,9 +139,19 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void UpdateResource(float woodAmount, float stoneAmount, FString buildingObject);
 
+	//Adds more resources. For debugging purposes
+	UFUNCTION(BlueprintCallable)
+	void AddResource_Debug(float woodAmount, float stoneAmount);
+
 	UFUNCTION(BlueprintCallable)
 	void SpawnBuilding(int buildingID, bool& isSuccess);
 
 	UFUNCTION()
 	void RotateBuilding();
+
+	UFUNCTION(BlueprintCallable)
+	int GetWood();
+
+	UFUNCTION(BlueprintCallable)
+	int GetStone();
 };
